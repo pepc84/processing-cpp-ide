@@ -1,13 +1,13 @@
 @echo off
 setlocal EnableDelayedExpansion
 :: =============================================================================
-:: processing-cpp -- Windows Setup
-:: Double-click this file. It installs MSYS2 if needed, then builds processing-cpp.exe.
+:: cpp-dev -- Windows Setup
+:: Double-click this file. It installs MSYS2 if needed, then builds cpp-dev.exe.
 :: =============================================================================
 
 echo.
 echo  +============================================+
-echo  ^|   processing-cpp -- Windows Setup         ^|
+echo  ^|   cpp-dev -- Windows Setup         ^|
 echo  +============================================+
 echo.
 
@@ -252,14 +252,14 @@ echo [INFO] Writing build scripts...
         src\IDE.cpp ^
         src\Processing_defaults.cpp ^
         src\main.cpp ^
-        -o processing-cpp.exe ^
+        -o cpp-dev.exe ^
         -lglfw3 -lglew32 -lopengl32 -lglu32 ^
         -lcomdlg32 -lshell32 -lole32 -luuid ^
         -pthread -O2 ^
         -D_USE_MATH_DEFINES ^
         -mwindows
     echo if %%ERRORLEVEL%% neq 0 ^( echo [ERR] Build failed. ^& pause ^& exit /b 1 ^)
-    echo echo [build] Done: processing-cpp.exe
+    echo echo [build] Done: cpp-dev.exe
 ) > buildIDE.bat
 echo [OK]  buildIDE.bat
 
@@ -296,7 +296,7 @@ echo [INFO] Building IDE...
     src\IDE.cpp ^
     src\Processing_defaults.cpp ^
     src\main.cpp ^
-    -o processing-cpp.exe ^
+    -o cpp-dev.exe ^
     -lglfw3 -lglew32 -lopengl32 -lglu32 ^
     -lcomdlg32 -lshell32 -lole32 -luuid ^
     -mwindows -pthread -O2 ^
@@ -307,7 +307,7 @@ if %ERRORLEVEL% neq 0 (
     echo [ERR] Build failed -- see errors above.
     pause & exit /b 1
 )
-echo [OK]  processing-cpp.exe built
+echo [OK]  cpp-dev.exe built
 
 :: ---------------------------------------------------------------------------
 :: 11. Collect DLLs
@@ -330,7 +330,7 @@ for %%D in (
 )
 
 :: Auto-collect any additional DLLs the binary links against (via bash/objdump)
-"!BASH!" -lc "cd '$(cygpath -u "%CD%")' && objdump -p processing-cpp.exe 2>/dev/null | grep 'DLL Name' | awk '{print $3}' | while read dll; do [ -f /mingw64/bin/$dll ] && [ ! -f ./$dll ] && cp /mingw64/bin/$dll . && echo "[OK]  $dll (auto)"; done"
+"!BASH!" -lc "cd '$(cygpath -u "%CD%")' && objdump -p cpp-dev.exe 2>/dev/null | grep 'DLL Name' | awk '{print $3}' | while read dll; do [ -f /mingw64/bin/$dll ] && [ ! -f ./$dll ] && cp /mingw64/bin/$dll . && echo "[OK]  $dll (auto)"; done"
 
 :: ---------------------------------------------------------------------------
 :: 11. Done
@@ -340,11 +340,11 @@ echo  +============================================+
 echo  ^|   Setup complete!                         ^|
 echo  +============================================+
 echo.
-echo   Run IDE:       double-click processing-cpp.exe
+echo   Run IDE:       double-click cpp-dev.exe
 echo   Build sketch:  build.bat MySketch.cpp
 echo   Rebuild IDE:   buildIDE.bat
 echo.
 pause
 :: Launch IDE
-:: Run "processing-cpp.exe --debug" from a terminal to see error output
-start "processing-cpp IDE" processing-cpp.exe
+:: Run "cpp-dev.exe --debug" from a terminal to see error output
+start "cpp-dev IDE" cpp-dev.exe

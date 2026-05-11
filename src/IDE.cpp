@@ -1,5 +1,5 @@
 // =============================================================================
-// IDE.cpp  --  processing-cpp IDE
+// IDE.cpp  --  cpp-dev IDE
 // A Processing-style creative coding IDE built with the Processing.h API.
 // =============================================================================
 
@@ -673,7 +673,7 @@ static void doSaveAs(const std::string& def = "") {
         if (path.size() < 4 || path.substr(path.size()-4) != ".cpp")
             path += ".cpp";
         saveFile(path);
-        windowTitle("processing-cpp IDE -- " + path);
+        windowTitle("cpp-dev IDE -- " + path);
     }
     // If dialog returns empty the user cancelled -- do nothing
 }
@@ -684,7 +684,7 @@ static void doSave() {
         doSaveAs();
     } else {
         saveFile(currentFile);
-        windowTitle("processing-cpp IDE -- " + currentFile);
+        windowTitle("cpp-dev IDE -- " + currentFile);
     }
 }
 
@@ -2642,7 +2642,7 @@ void setup() {
     size(1080, 740);
     windowResizable(true);
     frameRate(60);
-    windowTitle("processing-cpp IDE");
+    windowTitle("cpp-dev IDE");
 
     // Load window icon
     {
@@ -2660,7 +2660,7 @@ void setup() {
     checkInstalled();
     // Tree is populated when user clicks "Open" -- not on startup
     refreshExamples();  // scan examples/ on startup
-    outLines.push_back("processing-cpp ready.");
+    outLines.push_back("cpp-dev ready.");
     outLines.push_back("Ctrl+B build | Ctrl+R run | Ctrl+. stop | Ctrl+Shift+M serial | Ctrl+Shift+L libs");
 
 
