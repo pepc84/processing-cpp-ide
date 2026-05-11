@@ -999,12 +999,21 @@ static bool writeSketch() {
 
     f << "#include \"Processing.h\"\n";
     f << "namespace Processing {\n";
-    f << "using ::std::vector; using ::std::string; using ::std::map;\n";
-    f << "using ::std::sort; using ::std::shuffle; using ::std::random_device;\n";
-    f << "using ::std::mt19937; using ::std::uniform_int_distribution;\n";
-    f << "using ::std::pair; using ::std::make_pair; using ::std::set;\n";
-    f << "using ::std::deque; using ::std::stack; using ::std::queue;\n";
-    f << "using ::std::unordered_map; using ::std::to_string;\n";
+    // Bring in safe std names that don't conflict with Processing functions.
+    // Conflicting names (map, fill, copy, set) must be used as std::map etc.
+    f << "using std::vector; using std::string; using std::wstring;\n";
+    f << "using std::pair; using std::make_pair; using std::tuple;\n";
+    f << "using std::deque; using std::list; using std::stack; using std::queue;\n";
+    f << "using std::unordered_map; using std::unordered_set;\n";
+    f << "using std::sort; using std::shuffle; using std::reverse;\n";
+    f << "using std::unique_ptr; using std::shared_ptr; using std::make_unique; using std::make_shared;\n";
+    f << "using std::optional; using std::variant;\n";
+    f << "using std::to_string; using std::stoi; using std::stof; using std::stod;\n";
+    f << "using std::random_device; using std::mt19937; using std::mt19937_64;\n";
+    f << "using std::uniform_int_distribution; using std::uniform_real_distribution;\n";
+    f << "using std::normal_distribution;\n";
+    f << "using std::cout; using std::cerr; using std::endl;\n";
+    f << "using std::ifstream; using std::ofstream; using std::stringstream;\n";
 
     // Pre-scan: find variable names assigned color()/lerpColor() to fix their type.
     // Also propagates: if drawBand(a,b,...) is called where a,b are colorVars,

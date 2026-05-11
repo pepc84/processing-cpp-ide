@@ -5,6 +5,6 @@ g++ -std=c++17 \
     src/Processing.cpp \
     src/IDE.cpp \
     src/main.cpp \
-    -o ProcessingGL \
+    -o cpp-dev \
     -lglfw -lGLEW -lGL -lGLU -lm -pthread
-echo "[build] Done: ./ProcessingGL"
+echo "[build] Done: ./cpp-dev"

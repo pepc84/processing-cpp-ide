@@ -59,6 +59,19 @@
 #include <algorithm>
 #include <memory>
 #include <map>
+#include <set>
+#include <random>
+#include <stack>
+#include <queue>
+#include <list>
+#include <deque>
+#include <tuple>
+#include <optional>
+#include <variant>
+#include <numeric>
+#include <iterator>
+#include <memory>
+#include <regex>
 #include <iomanip>
 
 // ---------------------------------------------------------------------------
